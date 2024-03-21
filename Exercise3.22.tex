@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{amsthm,amsmath}
+\usepackage{amssymb}
+\begin{document}
+	\begin{flushleft}
+		Estimate a least-squares regression.
+	\[Y=X_{1}^{T}\tilde{\beta}_{1}+\tilde{\mu}\]
+	Then regress the residuals on another set of regressors.
+	\[\tilde{\mu}=X_{2}^{T}\tilde{\beta}_{2}+\tilde{e}\]
+	Then regress on both set of regressors.
+	\[Y=X_{1}^{T}\hat{\beta}_{1}+X_{2}^{T}\hat{\beta}_{2}+\hat{e}\]
+	Is it true that $\tilde{\beta}_{2}=\hat{\beta}_{2}$?
+	\end{flushleft}
+	\begin{proof}
+		~\\
+		\linespread{1.5}
+		$\tilde{\beta}_{2}=\hat{\beta}_{2}$ if and only if $X_{1}$ and $X_{2}$ are uncorrelated, i.e. $X_{1}^{T}X_{2}=0$\\
+		Define $M_{i}=I-X_{i}(X_{i}^{T}X_{i})^{-1}X_{i}^{T}$\\
+		We obtain $\tilde{\mu}=M_{1}Y$\\
+		$\tilde{\beta}_{2}=(X_{2}^{T}X_{2})^{-1}X_{2}^{T}\tilde{\mu}=(X_{2}^{T}X_{2})^{-1}X_{2}^{T}M_{1}Y$\\
+		$\hat{\beta}_{2}=(X_{2}^{T}M_{1}X_{2})^{-1}X_{2}^{T}M_{1}Y$\\
+		Suppose $\tilde{\beta}_{2}=\hat{\beta}_{2}$, then
+		\[(X_{2}^{T}X_{2})^{-1}X_{2}^{T}M_{1}Y=(X_{2}^{T}M_{1}X_{2})^{-1}X_{2}^{T}M_{1}Y\]
+		By algebra, we obtain $X_{2}^{T}X_{2}=X_{2}^{T}M_{1}X_{2}$\\
+		Thus,  \[X_{2}^{T}X_{2}=X_{2}^{T}(I-X_{1}(X_{1}^{T}X_{1})^{-1}X_{1}^{T})X_{2}\\
+		=X_{2}^{T}X_{2}-X_{2}^{T}X_{1}(X_{1}^{T}X_{1})^{-1}X_{1}^{T}X_{2}\]
+		Thus $X_{1}^{T}X_{2}=0$ since $(X_{1}^{T}X_{1})^{-1}$ is invertible. 
+	\end{proof}
+\end{document}
